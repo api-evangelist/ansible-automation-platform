@@ -1,0 +1,55 @@
+rules:
+  info-title-prefix:
+    description: Info title should start with "Ansible"
+    given: $.info
+    severity: warn
+    then:
+      field: title
+      function: pattern
+      functionOptions:
+        match: "^Ansible"
+
+  operation-operationId-required:
+    description: Every operation must have an operationId
+    given: "$.paths[*][get,post,put,patch,delete]"
+    severity: error
+    then:
+      field: operationId
+      function: truthy
+
+  operation-summary-required:
+    description: Every operation must have a summary
+    given: "$.paths[*][get,post,put,patch,delete]"
+    severity: error
+    then:
+      field: summary
+      function: truthy
+
+  operation-tags-required:
+    description: Every operation must have tags
+    given: "$.paths[*][get,post,put,patch,delete]"
+    severity: warn
+    then:
+      field: tags
+      function: truthy
+
+  response-success-required:
+    description: Operations must have success responses
+    given: "$.paths[*][get,post,put,patch,delete].responses"
+    severity: error
+    then:
+      function: schema
+      functionOptions:
+        schema:
+          type: object
+          anyOf:
+            - required: ["200"]
+            - required: ["201"]
+
+  security-global-defined:
+    description: Global security must be defined
+    given: "$"
+    severity: error
+    then:
+      field: security
+      function: truthy
