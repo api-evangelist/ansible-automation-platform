@@ -1,0 +1,224 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Ansible Automation Controller API
+  description: RESTful API for the Ansible Automation Controller providing programmatic access to job templates, workflows,
+    inventories, credentials, projects, and job execution.
+  tags:
+  - Ansible
+  - Automation
+  - Platform
+  - API
+  created: '2026-05-06'
+  modified: '2026-05-06'
+capability:
+  consumes:
+  - type: http
+    namespace: ansible-automation-platform
+    baseUri: https://controller-host/api/v2
+    description: Ansible Automation Controller API HTTP API.
+    authentication:
+      type: bearer
+      token: '{{ANSIBLE_AUTOMATION_PLATFORM_TOKEN}}'
+    resources:
+    - name: job-templates
+      path: /job_templates/
+      operations:
+      - name: listjobtemplates
+        method: GET
+        description: Ansible List Job Templates
+        inputParameters:
+        - name: page
+          in: query
+          type: integer
+        - name: page_size
+          in: query
+          type: integer
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: job-templates-id-launch
+      path: /job_templates/{id}/launch/
+      operations:
+      - name: launchjobtemplate
+        method: POST
+        description: Ansible Launch Job Template
+        inputParameters:
+        - name: id
+          in: path
+          type: integer
+          required: true
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: jobs
+      path: /jobs/
+      operations:
+      - name: listjobs
+        method: GET
+        description: Ansible List Jobs
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: inventories
+      path: /inventories/
+      operations:
+      - name: listinventories
+        method: GET
+        description: Ansible List Inventories
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: projects
+      path: /projects/
+      operations:
+      - name: listprojects
+        method: GET
+        description: Ansible List Projects
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+  exposes:
+  - type: rest
+    port: 8080
+    namespace: ansible-automation-platform-rest
+    description: REST adapter for Ansible Automation Controller API.
+    resources:
+    - path: /job_templates/
+      name: listjobtemplates
+      operations:
+      - method: GET
+        name: listjobtemplates
+        description: Ansible List Job Templates
+        call: ansible-automation-platform.listjobtemplates
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /job_templates/{id}/launch/
+      name: launchjobtemplate
+      operations:
+      - method: POST
+        name: launchjobtemplate
+        description: Ansible Launch Job Template
+        call: ansible-automation-platform.launchjobtemplate
+        with:
+          id: rest.id
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /jobs/
+      name: listjobs
+      operations:
+      - method: GET
+        name: listjobs
+        description: Ansible List Jobs
+        call: ansible-automation-platform.listjobs
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /inventories/
+      name: listinventories
+      operations:
+      - method: GET
+        name: listinventories
+        description: Ansible List Inventories
+        call: ansible-automation-platform.listinventories
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /projects/
+      name: listprojects
+      operations:
+      - method: GET
+        name: listprojects
+        description: Ansible List Projects
+        call: ansible-automation-platform.listprojects
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    port: 9090
+    namespace: ansible-automation-platform-mcp
+    transport: http
+    description: MCP adapter for Ansible Automation Controller API for AI agent use.
+    tools:
+    - name: listjobtemplates
+      description: Ansible List Job Templates
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: ansible-automation-platform.listjobtemplates
+      with:
+        page: tools.page
+        page_size: tools.page_size
+      inputParameters:
+      - name: page
+        type: integer
+        description: page
+      - name: page_size
+        type: integer
+        description: page_size
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: launchjobtemplate
+      description: Ansible Launch Job Template
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: ansible-automation-platform.launchjobtemplate
+      with:
+        id: tools.id
+      inputParameters:
+      - name: id
+        type: integer
+        description: id
+        required: true
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: listjobs
+      description: Ansible List Jobs
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: ansible-automation-platform.listjobs
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: listinventories
+      description: Ansible List Inventories
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: ansible-automation-platform.listinventories
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: listprojects
+      description: Ansible List Projects
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: ansible-automation-platform.listprojects
+      outputParameters:
+      - type: object
+        mapping: $.
+binds:
+- namespace: env
+  keys:
+    ANSIBLE_AUTOMATION_PLATFORM_TOKEN: ANSIBLE_AUTOMATION_PLATFORM_TOKEN
