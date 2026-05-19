@@ -1,0 +1,70 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Ansible Automation Controller API — Jobs
+  description: 'Ansible Automation Controller API — Jobs. 1 operations. Lead operation: Ansible List Jobs. Self-contained
+    Naftiko capability covering one Ansible Automation Platform business surface.'
+  tags:
+  - Ansible Automation Platform
+  - Jobs
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    ANSIBLE_AUTOMATION_PLATFORM_API_KEY: ANSIBLE_AUTOMATION_PLATFORM_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: ansible-controller-jobs
+    baseUri: https://controller-host/api/v2
+    description: Ansible Automation Controller API — Jobs business capability. Self-contained, no shared references.
+    resources:
+    - name: jobs
+      path: /jobs/
+      operations:
+      - name: listjobs
+        method: GET
+        description: Ansible List Jobs
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    authentication:
+      type: bearer
+      token: '{{env.ANSIBLE_AUTOMATION_PLATFORM_API_KEY}}'
+  exposes:
+  - type: rest
+    namespace: ansible-controller-jobs-rest
+    port: 8080
+    description: REST adapter for Ansible Automation Controller API — Jobs. One Spectral-compliant resource per consumed operation,
+      prefixed with /v1.
+    resources:
+    - path: /v1/jobs
+      name: jobs
+      description: REST surface for jobs.
+      operations:
+      - method: GET
+        name: listjobs
+        description: Ansible List Jobs
+        call: ansible-controller-jobs.listjobs
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: ansible-controller-jobs-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for Ansible Automation Controller API — Jobs. One tool per consumed operation, routed inline
+      through this capability's consumes block.
+    tools:
+    - name: ansible-list-jobs
+      description: Ansible List Jobs
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: ansible-controller-jobs.listjobs
+      outputParameters:
+      - type: object
+        mapping: $.
