@@ -38,13 +38,13 @@ apis:
     url: https://docs.ansible.com/automation-controller/latest/html/controllerapi/authentication.html
   - type: GettingStarted
     url: https://docs.ansible.com/automation-controller/latest/html/controllerapi/intro.html
-  - type: NaftikoCapability
+  - type: X-NaftikoCapability
     url: capabilities/ansible-controller-inventories.yaml
-  - type: NaftikoCapability
+  - type: X-NaftikoCapability
     url: capabilities/ansible-controller-job-templates.yaml
-  - type: NaftikoCapability
+  - type: X-NaftikoCapability
     url: capabilities/ansible-controller-jobs.yaml
-  - type: NaftikoCapability
+  - type: X-NaftikoCapability
     url: capabilities/ansible-controller-projects.yaml
 - aid: ansible-automation-platform:hub-api
   name: Ansible Automation Hub API
