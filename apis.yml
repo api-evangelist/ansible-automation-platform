@@ -92,6 +92,10 @@ apis:
   - type: APIReference
     url: https://galaxy.ansible.com/api/
 common:
+- type: DomainSecurity
+  url: security/ansible-automation-platform-domain-security.yml
+- type: Authentication
+  url: authentication/ansible-automation-platform-authentication.yml
 - type: LinkedIn
   url: https://www.linkedin.com/company/ansible
 - type: Portal
