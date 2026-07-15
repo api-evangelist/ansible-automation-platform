@@ -92,6 +92,8 @@ apis:
   - type: APIReference
     url: https://galaxy.ansible.com/api/
 common:
+- type: AgenticAccess
+  url: agentic-access/ansible-automation-platform-agentic-access.yml
 - type: DomainSecurity
   url: security/ansible-automation-platform-domain-security.yml
 - type: Authentication
