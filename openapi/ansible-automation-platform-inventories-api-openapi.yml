@@ -1,0 +1,71 @@
+openapi: 3.0.3
+info:
+  title: Ansible Automation Controller Inventories API
+  description: RESTful API for the Ansible Automation Controller providing programmatic access to job templates, workflows, inventories, credentials, projects, and job execution.
+  version: '2.0'
+  contact:
+    name: Ansible Community
+    url: https://docs.ansible.com/
+  x-generated-from: documentation
+  x-last-validated: '2026-04-18'
+servers:
+- url: https://controller-host/api/v2
+  description: Ansible Automation Controller API v2
+security:
+- bearerAuth: []
+tags:
+- name: Inventories
+  description: Manage inventories
+paths:
+  /inventories/:
+    get:
+      operationId: listInventories
+      summary: Ansible List Inventories
+      description: List all inventories.
+      tags:
+      - Inventories
+      responses:
+        '200':
+          description: Successfully retrieved inventories.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/InventoryList'
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+components:
+  schemas:
+    InventoryList:
+      type: object
+      properties:
+        count:
+          type: integer
+        results:
+          type: array
+          items:
+            $ref: '#/components/schemas/Inventory'
+    Inventory:
+      type: object
+      description: An Ansible inventory.
+      properties:
+        id:
+          type: integer
+          example: 1
+        name:
+          type: string
+          example: Production Servers
+        description:
+          type: string
+          example: Production server inventory
+        organization:
+          type: integer
+          example: 1
+        host_count:
+          type: integer
+          example: 50
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      description: OAuth2 token or personal access token.

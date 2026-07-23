@@ -1,0 +1,76 @@
+openapi: 3.0.3
+info:
+  title: Ansible Automation Controller Inventories Projects API
+  description: RESTful API for the Ansible Automation Controller providing programmatic access to job templates, workflows, inventories, credentials, projects, and job execution.
+  version: '2.0'
+  contact:
+    name: Ansible Community
+    url: https://docs.ansible.com/
+  x-generated-from: documentation
+  x-last-validated: '2026-04-18'
+servers:
+- url: https://controller-host/api/v2
+  description: Ansible Automation Controller API v2
+security:
+- bearerAuth: []
+tags:
+- name: Projects
+  description: Manage projects
+paths:
+  /projects/:
+    get:
+      operationId: listProjects
+      summary: Ansible List Projects
+      description: List all projects.
+      tags:
+      - Projects
+      responses:
+        '200':
+          description: Successfully retrieved projects.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProjectList'
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+components:
+  schemas:
+    ProjectList:
+      type: object
+      properties:
+        count:
+          type: integer
+        results:
+          type: array
+          items:
+            $ref: '#/components/schemas/ProjectItem'
+    ProjectItem:
+      type: object
+      description: An Ansible project.
+      properties:
+        id:
+          type: integer
+          example: 1
+        name:
+          type: string
+          example: Web App Playbooks
+        description:
+          type: string
+          example: Playbooks for web application deployment
+        scm_type:
+          type: string
+          enum:
+          - git
+          - svn
+          - insights
+          - archive
+          example: git
+        scm_url:
+          type: string
+          example: https://github.com/org/playbooks.git
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      description: OAuth2 token or personal access token.

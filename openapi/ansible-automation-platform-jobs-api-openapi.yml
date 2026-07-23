@@ -1,0 +1,80 @@
+openapi: 3.0.3
+info:
+  title: Ansible Automation Controller Inventories Jobs API
+  description: RESTful API for the Ansible Automation Controller providing programmatic access to job templates, workflows, inventories, credentials, projects, and job execution.
+  version: '2.0'
+  contact:
+    name: Ansible Community
+    url: https://docs.ansible.com/
+  x-generated-from: documentation
+  x-last-validated: '2026-04-18'
+servers:
+- url: https://controller-host/api/v2
+  description: Ansible Automation Controller API v2
+security:
+- bearerAuth: []
+tags:
+- name: Jobs
+  description: Manage and execute jobs
+paths:
+  /jobs/:
+    get:
+      operationId: listJobs
+      summary: Ansible List Jobs
+      description: List all jobs.
+      tags:
+      - Jobs
+      responses:
+        '200':
+          description: Successfully retrieved jobs.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/JobList'
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+components:
+  schemas:
+    Job:
+      type: object
+      description: An Ansible job execution.
+      properties:
+        id:
+          type: integer
+          example: 100
+        name:
+          type: string
+          example: Deploy Web App
+        status:
+          type: string
+          enum:
+          - pending
+          - waiting
+          - running
+          - successful
+          - failed
+          - error
+          - canceled
+          example: running
+        started:
+          type: string
+          format: date-time
+          example: '2026-04-18T10:30:00Z'
+        job_template:
+          type: integer
+          example: 1
+    JobList:
+      type: object
+      properties:
+        count:
+          type: integer
+        results:
+          type: array
+          items:
+            $ref: '#/components/schemas/Job'
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      description: OAuth2 token or personal access token.
