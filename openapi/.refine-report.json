@@ -1,0 +1,20 @@
+{
+  "provider": "ansible-automation-platform",
+  "sources": [
+    "ansible-automation-platform-inventories-api-openapi.yml",
+    "ansible-automation-platform-job-templates-api-openapi.yml",
+    "ansible-automation-platform-jobs-api-openapi.yml",
+    "ansible-automation-platform-projects-api-openapi.yml"
+  ],
+  "outputs": [
+    "ansible-automation-platform-inventories-api-openapi.yml",
+    "ansible-automation-platform-job-templates-api-openapi.yml",
+    "ansible-automation-platform-jobs-api-openapi.yml",
+    "ansible-automation-platform-projects-api-openapi.yml"
+  ],
+  "archived": [],
+  "errors": [],
+  "warnings": [],
+  "notes": [],
+  "skipped": []
+}

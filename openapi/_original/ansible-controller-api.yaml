@@ -1,0 +1,294 @@
+openapi: 3.0.3
+info:
+  title: Ansible Automation Controller API
+  description: >-
+    RESTful API for the Ansible Automation Controller providing programmatic access
+    to job templates, workflows, inventories, credentials, projects, and job execution.
+  version: '2.0'
+  contact:
+    name: Ansible Community
+    url: https://docs.ansible.com/
+  x-generated-from: documentation
+  x-last-validated: '2026-04-18'
+servers:
+  - url: https://controller-host/api/v2
+    description: Ansible Automation Controller API v2
+security:
+  - bearerAuth: []
+tags:
+  - name: Job Templates
+    description: Manage job templates
+  - name: Jobs
+    description: Manage and execute jobs
+  - name: Inventories
+    description: Manage inventories
+  - name: Projects
+    description: Manage projects
+paths:
+  /job_templates/:
+    get:
+      operationId: listJobTemplates
+      summary: Ansible List Job Templates
+      description: List all job templates available in the controller.
+      tags:
+        - Job Templates
+      parameters:
+        - name: page
+          in: query
+          schema:
+            type: integer
+            default: 1
+        - name: page_size
+          in: query
+          schema:
+            type: integer
+            default: 25
+      responses:
+        '200':
+          description: Successfully retrieved job templates.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/JobTemplateList'
+              examples:
+                ListJobTemplates200Example:
+                  summary: Default listJobTemplates 200 response
+                  x-microcks-default: true
+                  value:
+                    count: 15
+                    results:
+                      - id: 1
+                        name: "Deploy Web App"
+                        description: "Deploy web application to production"
+                        job_type: "run"
+                        inventory: 1
+                        project: 1
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+  /job_templates/{id}/launch/:
+    post:
+      operationId: launchJobTemplate
+      summary: Ansible Launch Job Template
+      description: Launch a job from a job template.
+      tags:
+        - Job Templates
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/JobLaunch'
+      responses:
+        '201':
+          description: Job launched successfully.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Job'
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+  /jobs/:
+    get:
+      operationId: listJobs
+      summary: Ansible List Jobs
+      description: List all jobs.
+      tags:
+        - Jobs
+      responses:
+        '200':
+          description: Successfully retrieved jobs.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/JobList'
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+  /inventories/:
+    get:
+      operationId: listInventories
+      summary: Ansible List Inventories
+      description: List all inventories.
+      tags:
+        - Inventories
+      responses:
+        '200':
+          description: Successfully retrieved inventories.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/InventoryList'
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+  /projects/:
+    get:
+      operationId: listProjects
+      summary: Ansible List Projects
+      description: List all projects.
+      tags:
+        - Projects
+      responses:
+        '200':
+          description: Successfully retrieved projects.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProjectList'
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+components:
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      description: OAuth2 token or personal access token.
+  schemas:
+    JobTemplate:
+      type: object
+      description: An Ansible job template.
+      properties:
+        id:
+          type: integer
+          example: 1
+        name:
+          type: string
+          example: "Deploy Web App"
+        description:
+          type: string
+          example: "Deploy web application to production"
+        job_type:
+          type: string
+          enum: [run, check]
+          example: "run"
+        inventory:
+          type: integer
+          example: 1
+        project:
+          type: integer
+          example: 1
+        playbook:
+          type: string
+          example: "deploy.yml"
+        status:
+          type: string
+          example: "successful"
+    JobTemplateList:
+      type: object
+      properties:
+        count:
+          type: integer
+          example: 15
+        results:
+          type: array
+          items:
+            $ref: '#/components/schemas/JobTemplate'
+    Job:
+      type: object
+      description: An Ansible job execution.
+      properties:
+        id:
+          type: integer
+          example: 100
+        name:
+          type: string
+          example: "Deploy Web App"
+        status:
+          type: string
+          enum: [pending, waiting, running, successful, failed, error, canceled]
+          example: "running"
+        started:
+          type: string
+          format: date-time
+          example: "2026-04-18T10:30:00Z"
+        job_template:
+          type: integer
+          example: 1
+    JobList:
+      type: object
+      properties:
+        count:
+          type: integer
+        results:
+          type: array
+          items:
+            $ref: '#/components/schemas/Job'
+    JobLaunch:
+      type: object
+      description: Parameters for launching a job.
+      properties:
+        extra_vars:
+          type: object
+          additionalProperties: true
+          description: Extra variables for the job.
+        inventory:
+          type: integer
+          description: Override inventory.
+        limit:
+          type: string
+          description: Host limit pattern.
+    Inventory:
+      type: object
+      description: An Ansible inventory.
+      properties:
+        id:
+          type: integer
+          example: 1
+        name:
+          type: string
+          example: "Production Servers"
+        description:
+          type: string
+          example: "Production server inventory"
+        organization:
+          type: integer
+          example: 1
+        host_count:
+          type: integer
+          example: 50
+    InventoryList:
+      type: object
+      properties:
+        count:
+          type: integer
+        results:
+          type: array
+          items:
+            $ref: '#/components/schemas/Inventory'
+    ProjectItem:
+      type: object
+      description: An Ansible project.
+      properties:
+        id:
+          type: integer
+          example: 1
+        name:
+          type: string
+          example: "Web App Playbooks"
+        description:
+          type: string
+          example: "Playbooks for web application deployment"
+        scm_type:
+          type: string
+          enum: [git, svn, insights, archive]
+          example: "git"
+        scm_url:
+          type: string
+          example: "https://github.com/org/playbooks.git"
+    ProjectList:
+      type: object
+      properties:
+        count:
+          type: integer
+        results:
+          type: array
+          items:
+            $ref: '#/components/schemas/ProjectItem'
