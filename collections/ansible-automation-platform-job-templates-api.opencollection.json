@@ -1,0 +1,69 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Ansible Automation Controller Inventories Job Templates API",
+    "version": "2.0"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Job Templates",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Ansible List Job Templates",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://controller-host/api/v2/job_templates/",
+            "params": [
+              {
+                "name": "page",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "page_size",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "List all job templates available in the controller."
+        },
+        {
+          "info": {
+            "name": "Ansible Launch Job Template",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://controller-host/api/v2/job_templates/:id/launch/",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Launch a job from a job template."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

@@ -1,0 +1,121 @@
+{
+  "item": [
+    {
+      "id": "165f3557-0279-46c5-bc8e-0ff9776c789e",
+      "name": "Inventories",
+      "description": {
+        "content": "Manage inventories",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "c34701dd-2b59-417f-92f3-b00365b96fc0",
+          "name": "Ansible List Inventories",
+          "request": {
+            "name": "Ansible List Inventories",
+            "description": {
+              "content": "List all inventories.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "inventories",
+                ""
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "99daeabf-34c2-43e8-b238-8cf574f34aad",
+              "name": "Successfully retrieved inventories.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "inventories",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"count\": 1874,\n  \"results\": [\n    {\n      \"id\": 1,\n      \"name\": \"Production Servers\",\n      \"description\": \"Production server inventory\",\n      \"organization\": 1,\n      \"host_count\": 50\n    },\n    {\n      \"id\": 1,\n      \"name\": \"Production Servers\",\n      \"description\": \"Production server inventory\",\n      \"organization\": 1,\n      \"host_count\": 50\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://controller-host/api/v2",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "ff44992d-e758-4f45-8be5-2c9bece00127",
+    "name": "Ansible Automation Controller Inventories API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "RESTful API for the Ansible Automation Controller providing programmatic access to job templates, workflows, inventories, credentials, projects, and job execution.\n\nContact Support:\n Name: Ansible Community",
+      "type": "text/plain"
+    }
+  }
+}

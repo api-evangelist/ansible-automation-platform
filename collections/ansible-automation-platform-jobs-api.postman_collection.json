@@ -1,0 +1,121 @@
+{
+  "item": [
+    {
+      "id": "e97950ac-f22e-450c-a636-a53cca29c32c",
+      "name": "Jobs",
+      "description": {
+        "content": "Manage and execute jobs",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "99af8fe9-d977-44c5-8118-0a94839b2680",
+          "name": "Ansible List Jobs",
+          "request": {
+            "name": "Ansible List Jobs",
+            "description": {
+              "content": "List all jobs.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "jobs",
+                ""
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "9e5cbab1-4990-4c52-a3c6-4d1709fa719c",
+              "name": "Successfully retrieved jobs.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "jobs",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"count\": 8254,\n  \"results\": [\n    {\n      \"id\": 100,\n      \"name\": \"Deploy Web App\",\n      \"status\": \"running\",\n      \"started\": \"2026-04-18T10:30:00Z\",\n      \"job_template\": 1\n    },\n    {\n      \"id\": 100,\n      \"name\": \"Deploy Web App\",\n      \"status\": \"running\",\n      \"started\": \"2026-04-18T10:30:00Z\",\n      \"job_template\": 1\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://controller-host/api/v2",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "565e61ac-cf5b-4707-904e-8230aedfd610",
+    "name": "Ansible Automation Controller Inventories Jobs API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "RESTful API for the Ansible Automation Controller providing programmatic access to job templates, workflows, inventories, credentials, projects, and job execution.\n\nContact Support:\n Name: Ansible Community",
+      "type": "text/plain"
+    }
+  }
+}

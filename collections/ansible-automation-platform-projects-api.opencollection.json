@@ -1,0 +1,35 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Ansible Automation Controller Inventories Projects API",
+    "version": "2.0"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Projects",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Ansible List Projects",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://controller-host/api/v2/projects/"
+          },
+          "docs": "List all projects."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

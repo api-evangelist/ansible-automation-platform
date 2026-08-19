@@ -1,0 +1,35 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Ansible Automation Controller Inventories API",
+    "version": "2.0"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Inventories",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Ansible List Inventories",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://controller-host/api/v2/inventories/"
+          },
+          "docs": "List all inventories."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}
