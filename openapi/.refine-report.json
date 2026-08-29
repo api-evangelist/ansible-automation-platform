@@ -15,6 +15,12 @@
   "archived": [],
   "errors": [],
   "warnings": [],
-  "notes": [],
+  "notes": [
+    "ansible-automation-platform-inventories-api-openapi.yml: upgraded openapi 3.0.3 -> OpenAPI 3.2.0",
+    "ansible-automation-platform-job-templates-api-openapi.yml: upgraded openapi 3.0.3 -> OpenAPI 3.2.0",
+    "ansible-automation-platform-jobs-api-openapi.yml: upgraded openapi 3.0.3 -> OpenAPI 3.2.0",
+    "ansible-automation-platform-projects-api-openapi.yml: upgraded openapi 3.0.3 -> OpenAPI 3.2.0",
+    "apis.yml register: already-registered"
+  ],
   "skipped": []
 }
