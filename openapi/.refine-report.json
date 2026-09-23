@@ -1,10 +1,7 @@
 {
   "provider": "ansible-automation-platform",
   "sources": [
-    "ansible-automation-platform-inventories-api-openapi.yml",
-    "ansible-automation-platform-job-templates-api-openapi.yml",
-    "ansible-automation-platform-jobs-api-openapi.yml",
-    "ansible-automation-platform-projects-api-openapi.yml"
+    "_ae-authored/ansible-controller-api.yaml"
   ],
   "outputs": [
     "ansible-automation-platform-inventories-api-openapi.yml",
@@ -16,11 +13,14 @@
   "errors": [],
   "warnings": [],
   "notes": [
-    "ansible-automation-platform-inventories-api-openapi.yml: upgraded openapi 3.0.3 -> OpenAPI 3.2.0",
-    "ansible-automation-platform-job-templates-api-openapi.yml: upgraded openapi 3.0.3 -> OpenAPI 3.2.0",
-    "ansible-automation-platform-jobs-api-openapi.yml: upgraded openapi 3.0.3 -> OpenAPI 3.2.0",
-    "ansible-automation-platform-projects-api-openapi.yml: upgraded openapi 3.0.3 -> OpenAPI 3.2.0",
+    "sourced from openapi/_original/ (0 archived document(s)); previously refined output at the top level was skipped rather than re-split",
+    "ansible-controller-api.yaml: upgraded openapi 3.0.3 -> OpenAPI 3.2.0",
     "apis.yml register: already-registered"
   ],
-  "skipped": []
+  "skipped": [
+    "ansible-automation-platform-inventories-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "ansible-automation-platform-job-templates-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "ansible-automation-platform-jobs-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "ansible-automation-platform-projects-api-openapi.yml: previously refined output, superseded by openapi/_original/"
+  ]
 }

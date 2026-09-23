@@ -1,6 +1,6 @@
 openapi: 3.2.0
 info:
-  title: Ansible Automation Controller Inventories Job Templates API
+  title: Ansible Automation Controller Job Templates API
   description: RESTful API for the Ansible Automation Controller providing programmatic access to job templates, workflows, inventories, credentials, projects, and job execution.
   version: '2.0'
   contact:
@@ -88,20 +88,34 @@ paths:
         dispatcher: FALLBACK
 components:
   schemas:
-    JobLaunch:
+    Job:
       type: object
-      description: Parameters for launching a job.
+      description: An Ansible job execution.
       properties:
-        extra_vars:
-          type: object
-          additionalProperties: true
-          description: Extra variables for the job.
-        inventory:
+        id:
           type: integer
-          description: Override inventory.
-        limit:
+          example: 100
+        name:
           type: string
-          description: Host limit pattern.
+          example: Deploy Web App
+        status:
+          type: string
+          enum:
+          - pending
+          - waiting
+          - running
+          - successful
+          - failed
+          - error
+          - canceled
+          example: running
+        started:
+          type: string
+          format: date-time
+          example: '2026-04-18T10:30:00Z'
+        job_template:
+          type: integer
+          example: 1
     JobTemplate:
       type: object
       description: An Ansible job template.
@@ -133,6 +147,20 @@ components:
         status:
           type: string
           example: successful
+    JobLaunch:
+      type: object
+      description: Parameters for launching a job.
+      properties:
+        extra_vars:
+          type: object
+          additionalProperties: true
+          description: Extra variables for the job.
+        inventory:
+          type: integer
+          description: Override inventory.
+        limit:
+          type: string
+          description: Host limit pattern.
     JobTemplateList:
       type: object
       properties:
@@ -143,34 +171,6 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/JobTemplate'
-    Job:
-      type: object
-      description: An Ansible job execution.
-      properties:
-        id:
-          type: integer
-          example: 100
-        name:
-          type: string
-          example: Deploy Web App
-        status:
-          type: string
-          enum:
-          - pending
-          - waiting
-          - running
-          - successful
-          - failed
-          - error
-          - canceled
-          example: running
-        started:
-          type: string
-          format: date-time
-          example: '2026-04-18T10:30:00Z'
-        job_template:
-          type: integer
-          example: 1
   securitySchemes:
     bearerAuth:
       type: http

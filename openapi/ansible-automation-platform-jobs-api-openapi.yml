@@ -1,6 +1,6 @@
 openapi: 3.2.0
 info:
-  title: Ansible Automation Controller Inventories Jobs API
+  title: Ansible Automation Controller Jobs API
   description: RESTful API for the Ansible Automation Controller providing programmatic access to job templates, workflows, inventories, credentials, projects, and job execution.
   version: '2.0'
   contact:
