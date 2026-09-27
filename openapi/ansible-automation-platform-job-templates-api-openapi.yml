@@ -88,34 +88,6 @@ paths:
         dispatcher: FALLBACK
 components:
   schemas:
-    Job:
-      type: object
-      description: An Ansible job execution.
-      properties:
-        id:
-          type: integer
-          example: 100
-        name:
-          type: string
-          example: Deploy Web App
-        status:
-          type: string
-          enum:
-          - pending
-          - waiting
-          - running
-          - successful
-          - failed
-          - error
-          - canceled
-          example: running
-        started:
-          type: string
-          format: date-time
-          example: '2026-04-18T10:30:00Z'
-        job_template:
-          type: integer
-          example: 1
     JobTemplate:
       type: object
       description: An Ansible job template.
@@ -161,6 +133,34 @@ components:
         limit:
           type: string
           description: Host limit pattern.
+    Job:
+      type: object
+      description: An Ansible job execution.
+      properties:
+        id:
+          type: integer
+          example: 100
+        name:
+          type: string
+          example: Deploy Web App
+        status:
+          type: string
+          enum:
+          - pending
+          - waiting
+          - running
+          - successful
+          - failed
+          - error
+          - canceled
+          example: running
+        started:
+          type: string
+          format: date-time
+          example: '2026-04-18T10:30:00Z'
+        job_template:
+          type: integer
+          example: 1
     JobTemplateList:
       type: object
       properties:
