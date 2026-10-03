@@ -36,15 +36,6 @@ paths:
         dispatcher: FALLBACK
 components:
   schemas:
-    ProjectList:
-      type: object
-      properties:
-        count:
-          type: integer
-        results:
-          type: array
-          items:
-            $ref: '#/components/schemas/ProjectItem'
     ProjectItem:
       type: object
       description: An Ansible project.
@@ -69,6 +60,15 @@ components:
         scm_url:
           type: string
           example: https://github.com/org/playbooks.git
+    ProjectList:
+      type: object
+      properties:
+        count:
+          type: integer
+        results:
+          type: array
+          items:
+            $ref: '#/components/schemas/ProjectItem'
   securitySchemes:
     bearerAuth:
       type: http

@@ -119,20 +119,6 @@ components:
         status:
           type: string
           example: successful
-    JobLaunch:
-      type: object
-      description: Parameters for launching a job.
-      properties:
-        extra_vars:
-          type: object
-          additionalProperties: true
-          description: Extra variables for the job.
-        inventory:
-          type: integer
-          description: Override inventory.
-        limit:
-          type: string
-          description: Host limit pattern.
     Job:
       type: object
       description: An Ansible job execution.
@@ -171,6 +157,20 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/JobTemplate'
+    JobLaunch:
+      type: object
+      description: Parameters for launching a job.
+      properties:
+        extra_vars:
+          type: object
+          additionalProperties: true
+          description: Extra variables for the job.
+        inventory:
+          type: integer
+          description: Override inventory.
+        limit:
+          type: string
+          description: Host limit pattern.
   securitySchemes:
     bearerAuth:
       type: http

@@ -36,6 +36,15 @@ paths:
         dispatcher: FALLBACK
 components:
   schemas:
+    JobList:
+      type: object
+      properties:
+        count:
+          type: integer
+        results:
+          type: array
+          items:
+            $ref: '#/components/schemas/Job'
     Job:
       type: object
       description: An Ansible job execution.
@@ -64,15 +73,6 @@ components:
         job_template:
           type: integer
           example: 1
-    JobList:
-      type: object
-      properties:
-        count:
-          type: integer
-        results:
-          type: array
-          items:
-            $ref: '#/components/schemas/Job'
   securitySchemes:
     bearerAuth:
       type: http
