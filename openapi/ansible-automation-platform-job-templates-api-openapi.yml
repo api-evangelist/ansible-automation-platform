@@ -88,6 +88,34 @@ paths:
         dispatcher: FALLBACK
 components:
   schemas:
+    Job:
+      type: object
+      description: An Ansible job execution.
+      properties:
+        id:
+          type: integer
+          example: 100
+        name:
+          type: string
+          example: Deploy Web App
+        status:
+          type: string
+          enum:
+          - pending
+          - waiting
+          - running
+          - successful
+          - failed
+          - error
+          - canceled
+          example: running
+        started:
+          type: string
+          format: date-time
+          example: '2026-04-18T10:30:00Z'
+        job_template:
+          type: integer
+          example: 1
     JobTemplate:
       type: object
       description: An Ansible job template.
@@ -119,44 +147,6 @@ components:
         status:
           type: string
           example: successful
-    Job:
-      type: object
-      description: An Ansible job execution.
-      properties:
-        id:
-          type: integer
-          example: 100
-        name:
-          type: string
-          example: Deploy Web App
-        status:
-          type: string
-          enum:
-          - pending
-          - waiting
-          - running
-          - successful
-          - failed
-          - error
-          - canceled
-          example: running
-        started:
-          type: string
-          format: date-time
-          example: '2026-04-18T10:30:00Z'
-        job_template:
-          type: integer
-          example: 1
-    JobTemplateList:
-      type: object
-      properties:
-        count:
-          type: integer
-          example: 15
-        results:
-          type: array
-          items:
-            $ref: '#/components/schemas/JobTemplate'
     JobLaunch:
       type: object
       description: Parameters for launching a job.
@@ -171,6 +161,16 @@ components:
         limit:
           type: string
           description: Host limit pattern.
+    JobTemplateList:
+      type: object
+      properties:
+        count:
+          type: integer
+          example: 15
+        results:
+          type: array
+          items:
+            $ref: '#/components/schemas/JobTemplate'
   securitySchemes:
     bearerAuth:
       type: http
