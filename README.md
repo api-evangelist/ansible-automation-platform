@@ -1,4 +1,4 @@
-# Ansible Automation Platform (ansible-automation-platform)
+# Ansible Automation Platform
 
 <!-- API-EVANGELIST-PROVENANCE:BEGIN -->
 > ### About this repository
@@ -64,84 +64,144 @@
 > Full detail: **[Where this data comes from](https://apievangelist.com/about/where-our-data-comes-from)**
 <!-- API-EVANGELIST-PROVENANCE:END -->
 
-Ansible Automation Platform provides a REST API for managing automation workflows, job templates, inventories, credentials, and projects. The API enables programmatic access to the automation controller for launching jobs, managing infrastructure inventory, and orchestrating complex multi-tier deployments across hybrid cloud environments.
+Ansible Automation Platform (formerly Ansible Tower) provides a REST API for managing automation workflows, job templates, inventories, credentials, and projects. The API enables programmatic access to the automation controller for launching jobs, managing infrastructure inventory, and orchestrating complex multi-tier deployments across hybrid cloud environments.
 
-**URL:** [https://raw.githubusercontent.com/api-evangelist/ansible-automation-platform/refs/heads/main/apis.yml](https://raw.githubusercontent.com/api-evangelist/ansible-automation-platform/refs/heads/main/apis.yml)
+**Areas:** Automation · Configuration Management · DevOps · Infrastructure as Code · Orchestration
 
-**Run:** [Capabilities Using Naftiko](https://github.com/naftiko/fleet?utm_source=api-evangelist&utm_medium=readme&utm_campaign=company-api-evangelist&utm_content=repo)
+## Ansible Automation Platform on APIs.io
 
-## Tags:
+Everything profiled for Ansible Automation Platform is published on APIs.io rather than in this repository. Start at the provider page — **[apis.io/providers/ansible-automation-platform/](https://apis.io/providers/ansible-automation-platform/)** — or go straight to one of the APIs or properties below.
 
- - Automation, Configuration Management, DevOps, Infrastructure as Code, Orchestration
+### APIs (8)
 
-## Timestamps
+- [Ansible Automation Controller API](https://apis.io/apis/ansible-automation-platform/controller-api/) — RESTful API for the Ansible Automation Controller (formerly Ansible Tower) providing programmatic access to job templates, workflows, inventories,…
+- [Ansible Automation Hub API](https://apis.io/apis/ansible-automation-platform/hub-api/) — REST API for Ansible Automation Hub providing access to certified and validated Ansible content collections, roles, and execution environments. Supports…
+- [Ansible Event-Driven Automation API](https://apis.io/apis/ansible-automation-platform/event-driven-api/) — API for Event-Driven Ansible (EDA) Controller enabling management of rulebooks, activations, and event sources for automated response to infrastructure and…
+- [Ansible Galaxy API](https://apis.io/apis/ansible-automation-platform/galaxy-api/) — REST API for Ansible Galaxy, the community hub for sharing Ansible roles and collections. Supports searching, downloading, and rating community automation…
+- [Ansible Automation Platform Inventories API](https://apis.io/apis/ansible-automation-platform/ansible-automation-platform-inventories-api/) — Manage inventories
+- [Ansible Automation Platform Job Templates API](https://apis.io/apis/ansible-automation-platform/ansible-automation-platform-job-templates-api/) — Manage job templates
+- [Ansible Automation Platform Jobs API](https://apis.io/apis/ansible-automation-platform/ansible-automation-platform-jobs-api/) — Manage and execute jobs
+- [Ansible Automation Platform Projects API](https://apis.io/apis/ansible-automation-platform/ansible-automation-platform-projects-api/) — Manage projects
 
-- **Created:** 2024-01-01
-- **Modified:** 2026-04-18
+### Published properties
 
-## APIs
+Each property below is a page on APIs.io carrying the machine-readable artifact and what it says.
 
-### Ansible Automation Controller API
-RESTful API for job templates, workflows, inventories, credentials, projects, and job execution.
+#### Agentic access (1)
 
-### Ansible Automation Hub API
-REST API for certified and validated Ansible content collections.
+Which operations an agent can call, which act, and which need a human in the loop.
 
-### Ansible Event-Driven Automation API
-API for Event-Driven Ansible Controller with rulebooks and event sources.
+- [Ansible Automation Platform Agentic Access](https://apis.io/agentic-access/ansible-automation-platform/ansible-automation-platform-agentic-access/)
 
-### Ansible Galaxy API
-REST API for community Ansible roles and collections.
+#### JSON-LD (1)
 
-## Features
+Linked-data contexts for the provider's vocabulary.
 
-| Name | Description |
-|------|-------------|
-| Job Template Management | Define and manage reusable automation job templates. |
-| Workflow Orchestration | Build multi-step automation workflows with conditional logic. |
-| Inventory Management | Manage dynamic and static inventories of infrastructure hosts. |
-| Role-Based Access Control | Fine-grained access control for automation resources. |
-| Event-Driven Automation | Automatically respond to infrastructure events. |
-| Content Collections | Discover and manage certified Ansible content collections. |
+- [Ansible Automation Platform Context](https://apis.io/jsonld/ansible-automation-platform/ansible-automation-platform-context/)
 
-## Use Cases
+#### Collections (4)
 
-| Name | Description |
-|------|-------------|
-| Infrastructure Provisioning | Automate provisioning of servers, networks, and cloud resources. |
-| Configuration Management | Maintain consistent configuration across thousands of servers. |
-| Application Deployment | Automate application deployment pipelines with rolling updates. |
-| Security Compliance | Enforce security policies through automated remediation workflows. |
-| Network Automation | Automate network device configuration across multi-vendor environments. |
+Postman and Open Collection request collections.
 
-## Integrations
+- [Ansible Automation Controller Inventories API](https://apis.io/collections/ansible-automation-platform/open-ansible-automation-platform-inventories-api/)
+- [Ansible Automation Controller Inventories Job Templates API](https://apis.io/collections/ansible-automation-platform/open-ansible-automation-platform-job-templates-api/)
+- [Ansible Automation Controller Inventories Jobs API](https://apis.io/collections/ansible-automation-platform/open-ansible-automation-platform-jobs-api/)
+- [Ansible Automation Controller Inventories Projects API](https://apis.io/collections/ansible-automation-platform/open-ansible-automation-platform-projects-api/)
 
-| Name | Description |
-|------|-------------|
-| Red Hat Satellite | Content management and patch automation integration. |
-| ServiceNow | ITSM integration for change management approval workflows. |
-| AWS | Cloud automation modules for AWS services. |
-| Azure | Cloud automation modules for Azure services. |
-| Terraform | Infrastructure as code integration. |
-| Jenkins | CI/CD pipeline integration for automated deployment. |
+#### Governance rules (1)
 
-## Artifacts
+Spectral rulesets for the provider's contracts.
 
-Machine-readable API specifications organized by format.
+- [Ansible Automation Platform API Rules](https://apis.io/rules/ansible-automation-platform/ansible-automation-platform-spectral-rules/)
 
-### OpenAPI
+#### Security (2)
 
-- [ansible-controller-api.yaml](openapi/ansible-controller-api.yaml)
+Authentication, trust centre, and vulnerability disclosure.
 
-### JSON-LD
+- [Ansible Automation Platform Authentication](https://apis.io/security/ansible-automation-platform/ansible-automation-platform-authentication/)
+- [Ansible Automation Platform Domain Security](https://apis.io/security/ansible-automation-platform/ansible-automation-platform-domain-security/)
 
-- [ansible-automation-platform-context.jsonld](json-ld/ansible-automation-platform-context.jsonld)
+#### Plans and pricing (1)
 
-## Rules
+Published plans, tiers and prices.
 
-- [ansible-automation-platform-spectral-rules.yml](rules/ansible-automation-platform-spectral-rules.yml)
+- [Ansible Automation Platform Plans Pricing](https://apis.io/plans/ansible-automation-platform/ansible-automation-platform-plans-pricing/)
 
-## Maintainers
+#### Rate limits (1)
 
-**FN:** Kin Lane
-**Email:** kin@apievangelist.com
+Published request limits.
+
+- [Ansible Automation Platform Rate Limits](https://apis.io/rate-limits/ansible-automation-platform/ansible-automation-platform-rate-limits/)
+
+#### FinOps (1)
+
+What the API costs to run, by operation.
+
+- [Ansible Automation Platform Finops](https://apis.io/finops/ansible-automation-platform/ansible-automation-platform-finops/)
+
+## Where to find this API
+
+Links to the company's own pages. This repository publishes no copy of their specifications — the canonical document is theirs and lives at the URLs below.
+
+- [Website](https://ansible.com)
+- [Documentation](https://docs.ansible.com/automation-controller/)
+- [Getting started](https://docs.ansible.com/ansible/latest/getting_started/)
+- [Pricing](https://www.redhat.com/en/technologies/management/ansible/pricing)
+- [Support](https://access.redhat.com/products/ansible-automation-platform)
+- [Blog](https://www.ansible.com/blog)
+- [Terms of service](https://www.redhat.com/en/about/agreements)
+- [Privacy policy](https://www.redhat.com/en/about/privacy-policy)
+- [GitHub](https://github.com/ansible)
+
+## API Evangelist rating
+
+**Kin Score 33.5** — thin · rubric 0.24.0 · scored 2026-10-17
+
+| Facet | Score |
+|---|---|
+| Discoverability | 71.4 |
+| Contract quality | 16.2 |
+| Contract governance | 11.4 |
+| Operational transparency | 10.5 |
+| Developer ergonomics | 54.8 |
+| Access clarity | 39.5 |
+
+**Agent readiness 20.4** — agent-aware
+
+| Agent-readiness dimension | Result |
+|---|---|
+| Spec Presence | yes |
+| Agentic Access | derived (partial credit) |
+| Reversibility Documented | — |
+| MCP Server | — |
+| Auth Clarity | bearer (partial credit) |
+| Idempotency | — |
+| Error Semantics | — |
+| OpenAPI Examples | partial |
+| Rate Limit Signal | derived (partial credit) |
+| Event Surface Described | — |
+| Agent Skills | — |
+| Well Known Catalog | — |
+| Consent Identity | — |
+| Agent Card | — |
+| Dry Run Mode | — |
+| Delegated Identity | — |
+| Protected Resource Metadata | — |
+| Dynamic Client Registration | — |
+| Agentic Commerce | — |
+
+**Regulatory alignment 24.5** — Horizontal (data, software, accessibility, platform)
+
+The rubric is published at [github.com/api-evangelist/kin-score](https://github.com/api-evangelist/kin-score). The per-check breakdown behind these numbers — which checks were earned, partial or missed — along with score history and how this provider compares to its peers, is available at [apis.io/providers/ansible-automation-platform/](https://apis.io/providers/ansible-automation-platform/).
+
+## How this profile is made
+
+API Evangelist profiles a company's public API surface the way a developer would find it: the website, developer portal and documentation, the specifications it publishes, its public repositories, and its pricing, status and changelog pages. From that it derives the properties above — contracts split per API, workflows, schemas, collections, governance rules, plans and rate limits — and scores them against the published [Kin Score rubric](https://github.com/api-evangelist/kin-score).
+
+The artifacts are published on [APIs.io](https://apis.io), not in this repository. This repository is the public record for Ansible Automation Platform: the place to say something is wrong, missing or out of date, and to ask for a re-score or a removal.
+
+## Open an issue
+
+- **Something about this listing** — a wrong description, a missing API, a stale artifact or a question about the rating: [open an issue on this repository](https://github.com/api-evangelist/ansible-automation-platform/issues/new).
+- **A new API, or one that is not in the catalog yet** — [submit it on APIs.io](https://apis.io/add/).
+- **Anything else** — [the APIs.io inbox](https://github.com/api-search/inbox/issues/new) or [info@apievangelist.com](mailto:info@apievangelist.com).
